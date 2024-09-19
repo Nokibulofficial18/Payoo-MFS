@@ -20,6 +20,28 @@ document.getElementById('add-money-btn').
             document.getElementById('account-balance').innerText = newBalacnce;
         }
         else{
-            alert('Failed to add money!! please recheck the pin')
+            alert('Failed to add money!! please recheck the pin.')
         }
 });
+
+
+document.getElementById('cashout-btn').
+    addEventListener('click',function(event){
+        event.preventDefault();
+
+        const cashOutMoney = Number(document.getElementById('input-cash-out').value);
+        const pinNumber = document.getElementById('input-cash-out-pin').value;
+        if(pinNumber === '1234'){
+            const accountBalance = Number(document.getElementById('account-balance').innerText);
+            if(accountBalance<cashOutMoney){
+                alert('Not Sufficient Balance');
+            }
+            else{
+                const newBalacnce = accountBalance - cashOutMoney;
+                document.getElementById('account-balance').innerText = newBalacnce;
+            }
+        }
+        else{
+            alert('Failed to cashout money!! please recheck the pin.')
+        }
+    })
